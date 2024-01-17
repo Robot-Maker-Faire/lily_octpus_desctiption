@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find lily_octpus_description)/urdf/base/base.gazebo.xacro"/>
+
+  <xacro:macro name="base" params="parent width height length rho *joint_origin">
+	<joint name="base_link_joint" type="fixed">
+	  <insert_block name="joint_origin"/>
+	  <parent link="${parent}"/>
+	  <child link="base_link"/>
+	</joint>
+
+	<link name="base_link">
+	  <visual>
+        <geometry>
+            <box size="${length} ${width} ${height}"/>
+        </geometry>
+	  </visual>
+	  <collision>
+        <geometry>
+            <box size="${length} ${width} ${height}"/>
+        </geometry>
+	  </collision>
+	  <inertial>
+		<mass value="${rho * length * width * height}"/>
+		<inertia
+			ixx="${rho * length * width * height / 12.0 * (width * width + height * height)}" ixy="0.0" ixz="0.0"
+			iyy="${rho * length * width * height / 12.0 * (height * height + length * length)}" iyz="0.0"
+			izz="${rho * length * width * height / 12.0 * (length * length + width * width)}"/>
+	  </inertial>
+	</link>
+  </xacro:macro>
+  
+</robot>

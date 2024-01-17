@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot name="lily_octpus" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find lily_octpus_description)/urdf/base/base.urdf.xacro"/>
+  <xacro:include filename="$(find lily_octpus_description)/urdf/leg/leg.urdf.xacro"/>
+  <xacro:include filename="$(find lily_octpus_description)/urdf/params/robot.xacro"/>
+  
+  <link name="world"/>
+  <joint name="fixed" type="fixed">
+    <parent link="world"/>
+    <child link="base_footprint"/>
+  </joint>
+
+  <!-- ===============  Link & Joint =============== -->
+  <!-- Base -->
+  <link name="base_footprint"/>
+  <xacro:base parent="base_footprint" 
+              length="${body_length}" 
+              width="${body_width}" 
+              height="${body_height}" 
+              rho="${body_rho}">
+  <!-- respawn point -->
+	<origin xyz="0 0 ${body_height+base_clause_radius/2+LF_tibia_length+appendix_radius+0.01}"/>
+  </xacro:base>
+
+  <!-- LEG -->
+  <xacro:leg prefix="BLF" parent="base_link" origin_xyz="${body_length/2} ${body_width/2} ${-body_height/2}" origin_rpy="0.955316618 0.0 ${-M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LF_base_clause_length}" base_clause_rpy="${LF_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${LF_thigh_length}" thigh_rpy="${LF_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${LF_tibia_length}" tibia_rpy="${LF_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+
+	<xacro:leg prefix="BLH" parent="base_link" origin_xyz="${-body_length/2} ${body_width/2} ${-body_height/2}" origin_rpy="0.955316618 0.0 ${M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LH_base_clause_length}" base_clause_rpy="${LH_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${LH_thigh_length}" thigh_rpy="${LH_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${LH_tibia_length}" tibia_rpy="${LH_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+
+  <xacro:leg prefix="BRF" parent="base_link" origin_xyz="${body_length/2} ${-body_width/2} ${-body_height/2}" origin_rpy="0.955316618 0.0 ${-3*M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RF_base_clause_length}" base_clause_rpy="${RF_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RF_thigh_length}" thigh_rpy="${RF_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RF_tibia_length}" tibia_rpy="${RF_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+
+	<xacro:leg prefix="BRH" parent="base_link" origin_xyz="${-body_length/2} ${-body_width/2} ${-body_height/2}" origin_rpy="0.955316618 0.0 ${3*M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RH_base_clause_length}" base_clause_rpy="${RH_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RH_thigh_length}" thigh_rpy="${RH_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RH_tibia_length}" tibia_rpy="${RH_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+
+  <xacro:leg prefix="TLF" parent="base_link" origin_xyz="${body_length/2} ${body_width/2} ${body_height/2}" origin_rpy="${M_PI+0.955316618} 0.0 ${3*M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LF_base_clause_length}" base_clause_rpy="${LF_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${LF_thigh_length}" thigh_rpy="${LF_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${LF_tibia_length}" tibia_rpy="${LF_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+
+	<xacro:leg prefix="TLH" parent="base_link" origin_xyz="${-body_length/2} ${body_width/2} ${body_height/2}" origin_rpy="${M_PI+0.955316618} 0.0 ${-3*M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${LH_base_clause_length}" base_clause_rpy="${LH_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${LH_thigh_length}" thigh_rpy="${LH_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${LH_tibia_length}" tibia_rpy="${LH_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+
+  <xacro:leg prefix="TRF" parent="base_link" origin_xyz="${body_length/2} ${-body_width/2} ${body_height/2}" origin_rpy="${M_PI+0.955316618} 0.0 ${M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RF_base_clause_length}" base_clause_rpy="${RF_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RF_thigh_length}" thigh_rpy="${RF_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RF_tibia_length}" tibia_rpy="${RF_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+
+	<xacro:leg prefix="TRH" parent="base_link" origin_xyz="${-body_length/2} ${-body_width/2} ${body_height/2}" origin_rpy="${M_PI+0.955316618} 0.0 ${-M_PI/4}"
+             base_clause_radius="${base_clause_radius}" base_clause_length="${RH_base_clause_length}" base_clause_rpy="${RH_base_clause_rpy}" base_clause_rho="${base_clause_rho}" base_clause_torque="${base_clause_torque}" base_clause_velocity="${base_clause_velocity}"
+             thigh_radius="${thigh_radius}" thigh_length="${RH_thigh_length}" thigh_rpy="${RH_thigh_rpy}" thigh_rho="${thigh_rho}" thigh_torque="${thigh_torque}" thigh_velocity="${thigh_velocity}"
+             tibia_radius="${tibia_radius}" tibia_length="${RH_tibia_length}" tibia_rpy="${RH_tibia_rpy}" tibia_rho="${tibia_rho}" tibia_torque="${tibia_torque}" tibia_velocity="${tibia_velocity}"
+             appendix_radius="${appendix_radius}" appendix_rho="${appendix_rho}"/>
+  
+  <!-- =============== Gazebo =============== -->
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <!--<robotNamespace>/lily_octpus</robotNamespace>
+      <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>-->
+    </plugin>
+  </gazebo>
+
+  <!-- Base -->
+  <xacro:base_gazebo/>
+
+  <!-- <xacro:base_clause_gazebo_control rate="25"/> -->
+
+
+</robot>
+
+  
