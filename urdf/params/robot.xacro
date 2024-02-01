@@ -22,17 +22,17 @@
   <property name="RH_thigh_length" value="${thigh_length}"/>
   <property name="RH_tibia_length" value="${tibia_length}"/>
 
-  <property name="base_clause_radius" value="0.04"/>
-  <property name="thigh_radius" value="0.04"/>
-  <property name="tibia_radius" value="0.04"/>
-  <property name="appendix_radius" value="0.04"/>
+  <property name="base_clause_radius" value="0.05"/>
+  <property name="thigh_radius" value="0.05"/>
+  <property name="tibia_radius" value="0.05"/>
+  <property name="appendix_radius" value="0.05"/>
   <property name="base_clause_rho" value="${1240*0.1}"/>
   <property name="thigh_rho" value="${1240*0.1}"/>
   <property name="tibia_rho" value="${1240*0.1}"/>
   <property name="appendix_rho" value="${1240*0.1}"/>
-  <property name="base_clause_torque" value="50"/>
-  <property name="thigh_torque" value="50"/>
-  <property name="tibia_torque" value="50"/>
+  <property name="base_clause_torque" value="100"/>
+  <property name="thigh_torque" value="100"/>
+  <property name="tibia_torque" value="100"/>
   <property name="base_clause_velocity" value="100"/>
   <property name="thigh_velocity" value="100"/>
   <property name="tibia_velocity" value="100"/>

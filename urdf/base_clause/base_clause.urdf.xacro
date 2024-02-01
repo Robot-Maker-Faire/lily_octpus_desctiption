@@ -13,6 +13,7 @@
       <origin xyz="0 0 0" rpy="0 0 0"/>
 	  <limit lower="${-M_PI}" upper="${M_PI}" effort="${torque}" velocity="${velocity}" />
 	  <insert_block name="joint_axis"/>
+	  <dynamics friction="1.0" />
 	</joint>
 
 	<link name="${prefix}_base_clause_link">
